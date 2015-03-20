@@ -42,7 +42,8 @@ module.exports = {
       },
       scripts:{
         src:[
-          'js/**/*.js', 
+          './bower_components/jquery/dist/jquery.min.js',
+          './js/**/*.js', 
           '!js/**/*.min.js'
         ],
         dest: development
@@ -51,11 +52,15 @@ module.exports = {
         src:  './img/**/*',
         dest: development + '/img'
       },
+      html: {
+        src: './tmpl/**/*.html',
+        dest: development
+      },
       watch: {
-        compass:    './scss/**/*.scss',
-        scripts: '/js/**/*.js',
-        images:  '/img/**/*'/*,*/
-        //sprites: '/images/**/*.png',
+        compass: './scss/**/*.scss',
+        scripts: './js/**/*.js',
+        images: './img/**/*',
+        html: './tmpl/**/*.html'
         //svg:     'vectors/*.svg'
       }
 };

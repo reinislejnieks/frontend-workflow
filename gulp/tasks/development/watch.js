@@ -8,6 +8,7 @@ gulp.task('watch', ['browsersync'], function() {
   gulp.watch(config.compass,    ['compass'/*, 'scsslint'*/]);
   gulp.watch(config.scripts, ['scripts'/*, 'jshint'*/]);
   gulp.watch(config.images,  ['images']);
+  gulp.watch(config.html,  ['html']);
   // gulp.watch(config.svg,     ['copy:fonts']);
   // gulp.watch(config.sprites, ['sprites']);
 });

@@ -7,6 +7,7 @@ var filesize = require('gulp-filesize');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var config = require('../../config');
+var reload = browsersync.reload;
 
 gulp.task('scripts', function () {
 
@@ -14,8 +15,8 @@ gulp.task('scripts', function () {
 	browsersync.notify('Compiling Scripts');
 	return gulp.src(config.scripts.src)
 		.pipe(plumber())
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
+		/*.pipe(jshint())
+		.pipe(jshint.reporter('default'))*/
         .pipe(filesize())
 		.pipe(uglify())
 		.pipe(concat('app.js'))
@@ -23,5 +24,7 @@ gulp.task('scripts', function () {
 		.pipe(rename('app.min.js'))
 		.pipe(uglify())
         .pipe(filesize())
-		.pipe(gulp.dest(config.scripts.dest));
+		.pipe(gulp.dest(config.scripts.dest))
+		.pipe(reload({stream: true}));
 });
+

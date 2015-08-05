@@ -1,4 +1,5 @@
 require "breakpoint"
+require "modular-scale"
 http_path = "/"
 css_dir =  "dist"
 sass_dir = "scss"

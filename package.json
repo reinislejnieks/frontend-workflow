@@ -33,6 +33,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-sourcemaps": "^1.5.1",
     "gulp-uglify": "^1.0.1",
+    "gutil": "^1.6.4",
     "imagemin-pngquant": "^4.0.0",
     "require-dir": "^0.1.0",
     "run-sequence": "^1.0.2"

@@ -7,15 +7,22 @@ var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
+var gutil = require('gulp-util');
 var config = require('../../config');
 
 gulp.task('compass', function(){
 
 	var filter = gulpFilter(['*.css', '!*.map']);
 	browsersync.notify('Compiling Sass');
-
+	var onError = function(err){
+		gutil.beep();
+		console.log(err.message);
+		this.emit('end');
+	};
 	return gulp.src(config.compass.src)
-	.pipe(plumber())
+	.pipe(plumber({
+		errorHandler: onError
+	}))
 	.pipe(compass(config.compass.options))
 	.pipe(sourcemaps.init())
 	.pipe(autoprefixer(config.autoprefixer))

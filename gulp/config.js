@@ -16,7 +16,7 @@ module.exports = {
         }
       },
       compass: {
-          src: './scss/main.scss',
+          src: './scss/**/*.scss',
           dest: development,
           options: {
             css: development,
@@ -42,7 +42,8 @@ module.exports = {
       },
       scripts:{
         src:[
-          './bower_components/jquery/dist/jquery.min.js',
+          './bower_components/jquery-legacy/jquery.min.js',
+          './bower_components/modernizr/modernizr.js',
           './js/**/*.js', 
           '!js/**/*.min.js'
         ],

@@ -13,12 +13,16 @@ gulp.task('scripts', function () {
 
 
 	browsersync.notify('Compiling Scripts');
+	var onError = function(err){
+		gutil.beep();
+		console.log(err.message);
+		this.emit('end');
+	};
 	return gulp.src(config.scripts.src)
-		.pipe(plumber())
+		.pipe(plumber(onError))
 		/*.pipe(jshint())
 		.pipe(jshint.reporter('default'))*/
         .pipe(filesize())
-		.pipe(uglify())
 		.pipe(concat('app.js'))
 		.pipe(gulp.dest(config.scripts.dest))
 		.pipe(rename('app.min.js'))

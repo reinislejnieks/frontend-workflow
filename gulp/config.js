@@ -16,9 +16,9 @@ module.exports = {
             development + '/img/**',
             development + '/index.html'
           ],
-          tunnel:true,
-          online:true,
-          open: 'tunnel'
+          tunnel:false,
+          online:false,
+          open: 'local'
         }
       },
       compass: {

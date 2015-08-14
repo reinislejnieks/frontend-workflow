@@ -1,4 +1,7 @@
 var development       = './dist';
+// browsersync - open: false, local, tunnel
+// for local tunnel::
+// tunnel:true, online: true
 
 module.exports = {
       browsersync: {
@@ -12,7 +15,10 @@ module.exports = {
             development + '/js/**',
             development + '/img/**',
             development + '/index.html'
-          ]
+          ],
+          tunnel:true,
+          online:true,
+          open: 'tunnel'
         }
       },
       compass: {
@@ -54,14 +60,14 @@ module.exports = {
         dest: development + '/img'
       },
       html: {
-        src: './tmpl/**/*.html',
+        src: './tmpl/**/!(_)*.jade',
         dest: development
       },
       watch: {
         compass: './scss/**/*.scss',
         scripts: './js/**/*.js',
         images: './img/**/*',
-        html: './tmpl/**/*.html'
+        html: './tmpl/**/*.jade'
         //svg:     'vectors/*.svg'
       }
 };

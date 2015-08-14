@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
+var notify = require('gulp-notify');
 var browsersync = require('browser-sync');
 var compass = require('gulp-compass');
 var gulpFilter = require('gulp-filter');
@@ -14,9 +15,12 @@ gulp.task('compass', function(){
 
 	var filter = gulpFilter(['*.css', '!*.map']);
 	browsersync.notify('Compiling Sass');
-	var onError = function(err){
-		gutil.beep();
-		console.log(err.message);
+	var onError = function(err) {
+		notify.onError({
+			title:    "Gulp Error",
+			message:  "Error: <%= error.message %>",
+			sound:    "Bottle"
+		})(err);
 		this.emit('end');
 	};
 	return gulp.src(config.compass.src)
@@ -24,11 +28,11 @@ gulp.task('compass', function(){
 		errorHandler: onError
 	}))
 	.pipe(compass(config.compass.options))
-	.pipe(sourcemaps.init())
+	// .pipe(sourcemaps.init())
 	.pipe(autoprefixer(config.autoprefixer))
-	.pipe(filter)
-	.pipe(sourcemaps.write('.',{includeContent: false}))
-	.pipe(filter.restore())
+	// .pipe(filter)
+	// .pipe(sourcemaps.write('.',{includeContent: false}))
+	// .pipe(filter.restore())
 	.pipe(gulp.dest(config.compass.dest))
 	.pipe(rename('main.min.css'))
 	.pipe(minifyCss())

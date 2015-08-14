@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var runSequence = require('run-sequence');
+var runSequence = require('run-sequence').use(gulp);
 
 /**
  * Run all tasks needed for a build in defined order
